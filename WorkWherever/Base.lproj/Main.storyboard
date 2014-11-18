@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,97 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Hob-53-R5H" userLabel="searchIcon">
+                                <rect key="frame" x="181" y="28" width="238" height="240"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdE-Xk-ZcO" userLabel="postView">
+                                <rect key="frame" x="0.0" y="288" width="600" height="312"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PostIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pVn-Yh-pLJ">
+                                        <rect key="frame" x="181" y="20" width="238" height="284"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078431372548" green="0.87058823529411766" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pVn-Yh-pLJ" secondAttribute="bottom" constant="8" id="GYi-cO-ihN"/>
+                                    <constraint firstAttribute="centerX" secondItem="pVn-Yh-pLJ" secondAttribute="centerX" id="mFh-dF-4P2"/>
+                                    <constraint firstItem="pVn-Yh-pLJ" firstAttribute="top" secondItem="pdE-Xk-ZcO" secondAttribute="top" constant="20" id="nPz-kM-IrO"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lL-RX-CoM" userLabel="Search Button">
+                                <rect key="frame" x="16" y="20" width="568" height="255"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Ljr-cN-BdU" kind="presentation" id="wOe-k3-LR3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.44705882352941179" green="0.31764705882352939" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="9lL-RX-CoM" secondAttribute="centerX" id="4V7-qO-nwB"/>
+                            <constraint firstItem="9lL-RX-CoM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="4sU-0y-wdp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pdE-Xk-ZcO" secondAttribute="bottom" id="6D6-Hr-k7S"/>
+                            <constraint firstAttribute="centerY" secondItem="9lL-RX-CoM" secondAttribute="centerY" id="9Vy-8l-QDC"/>
+                            <constraint firstItem="pdE-Xk-ZcO" firstAttribute="top" secondItem="9lL-RX-CoM" secondAttribute="bottom" constant="13" id="N6P-oG-AoN"/>
+                            <constraint firstItem="9lL-RX-CoM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="O2p-b8-Eql"/>
+                            <constraint firstAttribute="trailing" secondItem="9lL-RX-CoM" secondAttribute="trailing" constant="16" id="PJb-BX-NQw"/>
+                            <constraint firstAttribute="trailing" secondItem="pdE-Xk-ZcO" secondAttribute="trailing" id="Xer-Hc-3o4"/>
+                            <constraint firstItem="pdE-Xk-ZcO" firstAttribute="top" secondItem="Hob-53-R5H" secondAttribute="bottom" constant="20" id="ct7-VS-Kee"/>
+                            <constraint firstItem="pdE-Xk-ZcO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h8l-m5-4RY"/>
+                            <constraint firstItem="Hob-53-R5H" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="hDC-ZD-yZu"/>
+                            <constraint firstAttribute="centerX" secondItem="Hob-53-R5H" secondAttribute="centerX" id="iIe-55-n8S"/>
+                            <constraint firstItem="pVn-Yh-pLJ" firstAttribute="height" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="nnE-Vh-8HX"/>
+                            <constraint firstItem="Hob-53-R5H" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="nuR-XZ-HOG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9Vy-8l-QDC"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="CZF-8Q-GXc">
+            <objects>
+                <viewController id="Ljr-cN-BdU" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LLJ-la-2R8"/>
+                        <viewControllerLayoutGuide type="bottom" id="8vD-Ou-3UY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9tA-Um-ehi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" translatesAutoresizingMaskIntoConstraints="NO" id="Iu3-Db-2Rz">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.090196078430000007" green="0.87058823529999996" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Iu3-Db-2Rz" firstAttribute="leading" secondItem="9tA-Um-ehi" secondAttribute="leading" id="WRp-uf-khc"/>
+                            <constraint firstItem="Iu3-Db-2Rz" firstAttribute="top" secondItem="LLJ-la-2R8" secondAttribute="bottom" id="dvr-9L-cJ0"/>
+                            <constraint firstAttribute="trailing" secondItem="Iu3-Db-2Rz" secondAttribute="trailing" id="umf-bQ-pSr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="Iu3-Db-2Rz" id="Lte-ro-DAR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fq2-hx-JVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064" y="405"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="PostIcon" width="238" height="238"/>
+        <image name="SearchIcon" width="238" height="238"/>
+    </resources>
 </document>
