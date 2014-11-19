@@ -1,0 +1,57 @@
+{
+   "html_attributions" : [],
+   "results" : [
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.79593620000001,
+               "lng" : -122.40000320
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.80475270,
+                  "lng" : -122.38399580
+               },
+               "southwest" : {
+                  "lat" : 37.78711860,
+                  "lng" : -122.41601060
+               }
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "7498697d87cb1a28280277cb7825e0a4c21387d6",
+         "name" : "Financial District",
+         "reference" : "CoQBegAAAFrgJ9ZyeZrV_a9QWteNl9hrNGq-9qhPIP0M9yIL00HhKzBJNERhX95nEnAAtgBKqc2e51Yq2-OG3g-D8YZ20pcFKK7n3Pipd3Rpz7JmFedlg-gimYv3YGhOYVhblHYhhJM8y48J7tbDT4QPKsnumhsyhTf-5YktikanlFKt3NKNEhDwKmUyXRDhsYS1-rzHCZSRGhQP5VmDcuvvxvYE7e7dC-0PWYhfjw",
+         "types" : [ "neighborhood", "political" ],
+         "vicinity" : "San Francisco"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.7856560,
+               "lng" : -122.4012520
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/art_gallery-71.png",
+         "id" : "5e693f5ae4f1cd1512732b1568ff0e4b67ab0291",
+         "name" : "San Francisco Museum of Modern Art",
+         "rating" : 4.30,
+         "reference" : "CpQBgQAAAO9fVOGklWz3ugJeJ0DuVibD60yFJ_z19hm5Cm7f4NYsIECaVqC2yhQ746w2vMmAJmA-jYNNwp5_ot7hsRxVmcbO1TdvBtYG3LZ6JD2vxgMXSCFK3U2McAywoOsbPwjU-9fN6jtHmvuiCXNDamIUP4IX462NsmyO06digENJcMoLES75jTTvVBjuRvNFRdIJnRIQDtf7lhNra8eTmAYy1PKKnhoU7hDZ-Y6TB8HRnHBsVDnsWnL5E0o",
+         "types" : [ "art_gallery", "store", "establishment" ],
+         "vicinity" : "151 Third Street, San Francisco"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.7791590,
+               "lng" : -122.4158080
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/library-71.png",
+         "id" : "b1c83827c82c9fa59ffcdad652d1e8a1b04a4ae8",
+         "name" : "San Francisco Public Library",
+         "rating" : 4.20,
+         "reference" : "CoQBewAAAP-wCLLWVV2kys-vTPPr9LZPUkZXqrUUjG6LTRmcVARlehuh_SkvisDlH5X6WgoX6BG16e7RSS94xxhZbj0B3i7gC1KFDz_Oc88hK6YUj3w8Ix0N5M6UmKfAIXq1CYXLMrt_KAR7WsNF65MiSnj-Nqu0AMxwW-dMvRfmHOk7xGW0EhCyRZgNzYmPV08XAHZ-HBx_GhQYlLxuAU4MH8FvkdMWbQ1Xvf7WxA",
+         "types" : [ "library", "establishment" ],
+         "vicinity" : "100 Larkin Street, San Francisco"
+      }

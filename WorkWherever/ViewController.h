@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetworkController.h"
 
 @interface ViewController : UIViewController
+
 
 
 @end
