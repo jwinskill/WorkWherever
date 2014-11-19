@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Places.h"
+#import "Place.h"
 #import "Constants.h"
 
 @interface NetworkController : NSObject
