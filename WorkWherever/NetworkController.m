@@ -11,6 +11,7 @@
 @implementation NetworkController
 
 - (void) fetchPlacesWithSearchTerm:(NSString *)searchTerm completionHandler: (void(^)(NSError *error, NSMutableArray *places))completionHandler {
+    
     NSURL *urlWithSearchTerm = [NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=%@&location=47.620506,-122.349277&radius=5000&name=%@",kGoogleBrowserAPIKey, searchTerm]];
     
     NSURLSessionConfiguration *configuruation = [NSURLSessionConfiguration defaultSessionConfiguration];

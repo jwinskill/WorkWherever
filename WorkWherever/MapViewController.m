@@ -23,6 +23,7 @@
   //  UIImage *color = UIImage imageWithColor
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
+    self.searchBar.delegate = self;
     [locationManager requestAlwaysAuthorization];
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
@@ -58,6 +59,19 @@
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
         mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:14];
     }
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSString *resourceURL = [[NSBundle mainBundle] pathForResource:@"GooglePlacesExample" ofType:@"json"];
+    NSLog(@"%@", resourceURL);
+    NSData *jsonData = [NSData dataWithContentsOfFile:resourceURL];
+    
+    NSString *myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", myString);
+    NSMutableArray *myArray = [[NSMutableArray alloc] init];
+    myArray = [Place parseJSONIntoPlaces:jsonData];
+    Place *testPlace = myArray[0];
+    NSLog(@"The name of the first place is %@",testPlace.name);
 }
 
 @end

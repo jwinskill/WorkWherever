@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NetworkController networkController] fetchPlacesWithSearchTerm:@"guitar" completionHandler:nil];
 }
 
 - (void)didReceiveMemoryWarning {
