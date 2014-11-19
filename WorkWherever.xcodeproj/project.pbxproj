@@ -71,6 +71,10 @@
 		03A963801A1AA23400F19EA7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		03A963821A1AA45000F19EA7 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		03A963831A1AA45000F19EA7 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+
+		450EAC5A1A1BB4D800C302BE /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		450EAC5C1A1BB5B400C302BE /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = ../../../../.Trash/GoogleMaps.bundle; sourceTree = "<group>"; };
+
 		03A963901A1AAC5300F19EA7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		03A963951A1BF6C300F19EA7 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,8 +184,8 @@
 		03A963921A1AB16800F19EA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				03A963951A1BF6C300F19EA7 /* GoogleMaps.framework */,
-				03A963901A1AAC5300F19EA7 /* GoogleMaps.bundle */,
+				450EAC5C1A1BB5B400C302BE /* GoogleMaps.bundle */,
+				450EAC5A1A1BB4D800C302BE /* GoogleMaps.framework */,
 				03A963801A1AA23400F19EA7 /* AVFoundation.framework */,
 				03A9637E1A1AA22900F19EA7 /* SystemConfiguration.framework */,
 				03A9637C1A1AA22100F19EA7 /* QuartzCore.framework */,
@@ -281,7 +285,7 @@
 				03A9634E1A1A746700F19EA7 /* Main.storyboard in Resources */,
 				03A963531A1A746700F19EA7 /* LaunchScreen.xib in Resources */,
 				03A963501A1A746700F19EA7 /* Images.xcassets in Resources */,
-				03A963911A1AAC5300F19EA7 /* GoogleMaps.bundle in Resources */,
+				450EAC5D1A1BB5B400C302BE /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
