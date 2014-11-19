@@ -33,7 +33,7 @@
 		03A963A01A1BFC6A00F19EA7 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A9639F1A1BFC6A00F19EA7 /* NetworkController.m */; };
 		03A963A31A1BFDE400F19EA7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A963A21A1BFDE400F19EA7 /* Constants.m */; };
 		03A963A71A1C051800F19EA7 /* Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A963A61A1C051800F19EA7 /* Places.m */; };
-		03A963A91A1C1A9800F19EA7 /* GooglePlacesExampleJSON in Resources */ = {isa = PBXBuildFile; fileRef = 03A963A81A1C1A9800F19EA7 /* GooglePlacesExampleJSON */; };
+		03A963A91A1C1A9800F19EA7 /* GooglePlacesExample.json in Resources */ = {isa = PBXBuildFile; fileRef = 03A963A81A1C1A9800F19EA7 /* GooglePlacesExample.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,7 @@
 		03A963A21A1BFDE400F19EA7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		03A963A51A1C051800F19EA7 /* Places.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Places.h; sourceTree = "<group>"; };
 		03A963A61A1C051800F19EA7 /* Places.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Places.m; sourceTree = "<group>"; };
-		03A963A81A1C1A9800F19EA7 /* GooglePlacesExampleJSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GooglePlacesExampleJSON; sourceTree = "<group>"; };
+		03A963A81A1C1A9800F19EA7 /* GooglePlacesExample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GooglePlacesExample.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +219,7 @@
 				03A963A21A1BFDE400F19EA7 /* Constants.m */,
 				03A963A51A1C051800F19EA7 /* Places.h */,
 				03A963A61A1C051800F19EA7 /* Places.m */,
-				03A963A81A1C1A9800F19EA7 /* GooglePlacesExampleJSON */,
+				03A963A81A1C1A9800F19EA7 /* GooglePlacesExample.json */,
 			);
 			name = "Model Layer";
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03A963A91A1C1A9800F19EA7 /* GooglePlacesExampleJSON in Resources */,
+				03A963A91A1C1A9800F19EA7 /* GooglePlacesExample.json in Resources */,
 				03A9634E1A1A746700F19EA7 /* Main.storyboard in Resources */,
 				03A963531A1A746700F19EA7 /* LaunchScreen.xib in Resources */,
 				03A963501A1A746700F19EA7 /* Images.xcassets in Resources */,
