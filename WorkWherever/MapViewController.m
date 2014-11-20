@@ -13,6 +13,7 @@
 @implementation MapViewController {
     GMSMapView *mapView_;
     CLLocationManager *locationManager;
+    CLLocation *myLocation;
     BOOL updatedLocation_;
 }
 
@@ -29,19 +30,17 @@
     mapView_.delegate = self;
     [locationManager requestAlwaysAuthorization];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:47.6235053
-                                                            longitude:-122.3358261
-                                                                 zoom:6];
+    myLocation = [mapView_ myLocation];
     
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude longitude:myLocation.coordinate.longitude zoom:2];
+    [mapView_ animateToLocation:myLocation.coordinate];
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
-
-    mapView_.mapType = kGMSTypeNormal;
     
     [self.view insertSubview:mapView_ atIndex:0];
     
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
-//    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
+    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
     marker.title = @"Sydney";
     marker.snippet = @"Australia";
     marker.appearAnimation = kGMSMarkerAnimationPop;
@@ -53,7 +52,6 @@
     [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:0];
     mapView_.myLocationEnabled = YES;
     [mapView_ setNeedsDisplay];
-    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -62,7 +60,7 @@
             NSLog(@"in if");
             updatedLocation_ = YES;
             CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-            mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:14];
+            mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:15];
             [mapView_ setNeedsDisplay];
     }
      else {
@@ -81,22 +79,16 @@
     myArray = [Place parseJSONIntoPlaces:jsonData];
     Place *testPlace = myArray[0];
     NSLog(@"The name of the first place is %@",testPlace.name);
-    
 }
 
 -(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
     UIView *infoWindow = [[UIView alloc] init];
     infoWindow.frame = CGRectMake(0, 0, 200, 70);
     infoWindow.backgroundColor = [UIColor grayColor];
-    
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.frame = CGRectMake(14, 11, 175, 16);
     [infoWindow addSubview:titleLabel];
     titleLabel.text = marker.title;
     return  infoWindow;
 }
-
-//- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
-//    NSLog(@"Tapped!");
-//}
 @end
