@@ -13,29 +13,28 @@
 @implementation MapViewController {
     GMSMapView *mapView_;
     CLLocationManager *locationManager;
+    CLLocation *myLocation;
     BOOL updatedLocation_;
 }
 
 - (void)viewDidLoad {
+    
     // Create a GMSCameraPosition that tells the map to display the
     // coordinate -33.86,151.20 at zoom level 6.
     
   //  UIImage *color = UIImage imageWithColor
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     self.searchBar.delegate = self;
+    mapView_.delegate = self;
     [locationManager requestAlwaysAuthorization];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
-                                                                 zoom:6];
+    myLocation = [mapView_ myLocation];
     
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude longitude:myLocation.coordinate.longitude zoom:2];
+    [mapView_ animateToLocation:myLocation.coordinate];
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
-    
-    mapView_.myLocationEnabled = YES;
-    mapView_.mapType = kGMSTypeNormal;
-    
-    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:0];
     
     [self.view insertSubview:mapView_ atIndex:0];
     
@@ -46,18 +45,26 @@
     marker.snippet = @"Australia";
     marker.appearAnimation = kGMSMarkerAnimationPop;
     marker.map = mapView_;
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:0];
+    mapView_.myLocationEnabled = YES;
+    [mapView_ setNeedsDisplay];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"before if");
-    
-    if (!updatedLocation_) {
+    if ([keyPath isEqualToString:@"myLocation"]) {
             NSLog(@"in if");
-        updatedLocation_ = YES;
-        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:14];
+            updatedLocation_ = YES;
+            CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+            mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:15];
+            [mapView_ setNeedsDisplay];
+    }
+     else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 
@@ -74,4 +81,14 @@
     NSLog(@"The name of the first place is %@",testPlace.name);
 }
 
+-(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+    UIView *infoWindow = [[UIView alloc] init];
+    infoWindow.frame = CGRectMake(0, 0, 200, 70);
+    infoWindow.backgroundColor = [UIColor grayColor];
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.frame = CGRectMake(14, 11, 175, 16);
+    [infoWindow addSubview:titleLabel];
+    titleLabel.text = marker.title;
+    return  infoWindow;
+}
 @end
