@@ -40,7 +40,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ljr-cN-BdU" kind="presentation" id="wOe-k3-LR3"/>
+                                    <segue destination="Ljr-cN-BdU" kind="custom" identifier="MAPVIEW_SEGUE" id="Z6g-WW-y3c"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -70,6 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="422" y="-288"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="CZF-8Q-GXc">
@@ -88,9 +89,23 @@
                                 <color key="barTintColor" red="0.090196078430000007" green="0.87058823529999996" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUf-Er-Yd6">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back" id="3gC-wA-bhm">
+                                        <connections>
+                                            <segue destination="4W0-NQ-8nq" kind="unwind" unwindAction="unwindToBaseController:" id="w2c-H7-Una"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="P97-sk-YbS"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8vD-Ou-3UY" firstAttribute="top" secondItem="XUf-Er-Yd6" secondAttribute="bottom" id="0Gl-aX-N7y"/>
+                            <constraint firstAttribute="trailing" secondItem="XUf-Er-Yd6" secondAttribute="trailing" id="2UY-Ii-djb"/>
+                            <constraint firstItem="XUf-Er-Yd6" firstAttribute="leading" secondItem="9tA-Um-ehi" secondAttribute="leading" id="L7n-NM-sCe"/>
                             <constraint firstItem="Iu3-Db-2Rz" firstAttribute="leading" secondItem="9tA-Um-ehi" secondAttribute="leading" id="WRp-uf-khc"/>
                             <constraint firstItem="Iu3-Db-2Rz" firstAttribute="top" secondItem="LLJ-la-2R8" secondAttribute="bottom" id="dvr-9L-cJ0"/>
                             <constraint firstAttribute="trailing" secondItem="Iu3-Db-2Rz" secondAttribute="trailing" id="umf-bQ-pSr"/>
@@ -101,8 +116,77 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fq2-hx-JVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4W0-NQ-8nq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1319" y="-288"/>
+        </scene>
+        <!--Wifi Detail View Controller-->
+        <scene sceneID="Xjd-S4-ygy">
+            <objects>
+                <viewController id="Fc8-a4-444" customClass="WifiDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qb5-Ru-DJo"/>
+                        <viewControllerLayoutGuide type="bottom" id="GaQ-3H-6ux"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w3C-P9-6zR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wifi Speed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1H-5i-K6o">
+                                <rect key="frame" x="16" y="182" width="86" height="27"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.82745098039999998" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P4-MQ-CVV">
+                                <rect key="frame" x="16" y="264" width="50" height="27"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.82745098039999998" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmN-BA-d44">
+                                <rect key="frame" x="16" y="346" width="44" height="27"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.82745098039999998" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWK-vP-uUo">
+                                <rect key="frame" x="16" y="428" width="54" height="27"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.82745098039999998" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coffee Shop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpH-YN-C4d">
+                                <rect key="frame" x="190" y="80" width="221" height="59"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="38"/>
+                                <color key="textColor" red="0.19215686274509805" green="0.82745098039215681" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.29411764705882354" green="0.19215686274509805" blue="0.050980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0P4-MQ-CVV" firstAttribute="top" secondItem="F1H-5i-K6o" secondAttribute="bottom" constant="55" id="7hw-Vn-GKp"/>
+                            <constraint firstItem="0P4-MQ-CVV" firstAttribute="leading" secondItem="w3C-P9-6zR" secondAttribute="leading" constant="16" id="9m3-Us-Vvw"/>
+                            <constraint firstItem="F1H-5i-K6o" firstAttribute="leading" secondItem="w3C-P9-6zR" secondAttribute="leading" constant="16" id="Mb7-cB-IOI"/>
+                            <constraint firstItem="YWK-vP-uUo" firstAttribute="leading" secondItem="w3C-P9-6zR" secondAttribute="leading" constant="16" id="Odn-ab-9sl"/>
+                            <constraint firstItem="FpH-YN-C4d" firstAttribute="top" secondItem="qb5-Ru-DJo" secondAttribute="bottom" constant="60" id="XQ0-ee-V84"/>
+                            <constraint firstItem="JmN-BA-d44" firstAttribute="leading" secondItem="w3C-P9-6zR" secondAttribute="leading" constant="16" id="YGW-od-x2S"/>
+                            <constraint firstAttribute="centerX" secondItem="FpH-YN-C4d" secondAttribute="centerX" id="i2E-Kq-WM2"/>
+                            <constraint firstItem="F1H-5i-K6o" firstAttribute="top" secondItem="FpH-YN-C4d" secondAttribute="bottom" constant="43" id="pr9-s2-Y9q"/>
+                            <constraint firstItem="YWK-vP-uUo" firstAttribute="top" secondItem="JmN-BA-d44" secondAttribute="bottom" constant="55" id="upZ-Tz-l5f"/>
+                            <constraint firstItem="JmN-BA-d44" firstAttribute="top" secondItem="0P4-MQ-CVV" secondAttribute="bottom" constant="55" id="vfv-Wm-Iqe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="foodLabel" destination="JmN-BA-d44" id="CnS-SL-LnJ"/>
+                        <outlet property="openLabel" destination="0P4-MQ-CVV" id="rrC-75-J9W"/>
+                        <outlet property="ratingLabel" destination="YWK-vP-uUo" id="78l-cd-mKt"/>
+                        <outlet property="wifiSpeedLabel" destination="F1H-5i-K6o" id="I0F-sS-rsB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nLE-OV-vat" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180" y="366"/>
         </scene>
     </scenes>
     <resources>
