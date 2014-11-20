@@ -37,7 +37,7 @@
 		03A963C31A1D5C1500F19EA7 /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03A963C21A1D5C1500F19EA7 /* InfoWindow.xib */; };
 		03A963C71A1D5DA200F19EA7 /* InfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A963C61A1D5DA200F19EA7 /* InfoWindow.m */; };
 		03A963CA1A1E68AC00F19EA7 /* Transitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A963C91A1E68AC00F19EA7 /* Transitioner.m */; };
-		03A963CD1A1E78F500F19EA7 /* GMSMarker+MarkerAddPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A963CC1A1E78F500F19EA7 /* GMSMarker+MarkerAddPlace.m */; };
+		03A964081A1EA7A600F19EA7 /* PlaceMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A964071A1EA7A600F19EA7 /* PlaceMarker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,8 +92,8 @@
 		03A963C61A1D5DA200F19EA7 /* InfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoWindow.m; sourceTree = "<group>"; };
 		03A963C81A1E68AC00F19EA7 /* Transitioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transitioner.h; sourceTree = "<group>"; };
 		03A963C91A1E68AC00F19EA7 /* Transitioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transitioner.m; sourceTree = "<group>"; };
-		03A963CB1A1E78F500F19EA7 /* GMSMarker+MarkerAddPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMSMarker+MarkerAddPlace.h"; sourceTree = "<group>"; };
-		03A963CC1A1E78F500F19EA7 /* GMSMarker+MarkerAddPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMSMarker+MarkerAddPlace.m"; sourceTree = "<group>"; };
+		03A964061A1EA7A600F19EA7 /* PlaceMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMarker.h; sourceTree = "<group>"; };
+		03A964071A1EA7A600F19EA7 /* PlaceMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMarker.m; sourceTree = "<group>"; };
 		450EAC5A1A1BB4D800C302BE /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,8 +164,6 @@
 		03A9633F1A1A746700F19EA7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03A963CB1A1E78F500F19EA7 /* GMSMarker+MarkerAddPlace.h */,
-				03A963CC1A1E78F500F19EA7 /* GMSMarker+MarkerAddPlace.m */,
 				03A963C81A1E68AC00F19EA7 /* Transitioner.h */,
 				03A963C91A1E68AC00F19EA7 /* Transitioner.m */,
 				03A963A11A1BFDE400F19EA7 /* Constants.h */,
@@ -246,6 +244,8 @@
 				03A963C21A1D5C1500F19EA7 /* InfoWindow.xib */,
 				03A963C51A1D5DA200F19EA7 /* InfoWindow.h */,
 				03A963C61A1D5DA200F19EA7 /* InfoWindow.m */,
+				03A964061A1EA7A600F19EA7 /* PlaceMarker.h */,
+				03A964071A1EA7A600F19EA7 /* PlaceMarker.m */,
 			);
 			name = "View Layer";
 			sourceTree = "<group>";
@@ -358,8 +358,8 @@
 				03A963481A1A746700F19EA7 /* WorkWherever.xcdatamodeld in Sources */,
 				03A963841A1AA45000F19EA7 /* MapViewController.m in Sources */,
 				03A963A71A1C051800F19EA7 /* Place.m in Sources */,
-				03A963CD1A1E78F500F19EA7 /* GMSMarker+MarkerAddPlace.m in Sources */,
 				03A963C71A1D5DA200F19EA7 /* InfoWindow.m in Sources */,
+				03A964081A1EA7A600F19EA7 /* PlaceMarker.m in Sources */,
 				03A9634B1A1A746700F19EA7 /* ViewController.m in Sources */,
 				03A963A01A1BFC6A00F19EA7 /* NetworkController.m in Sources */,
 				03A963A31A1BFDE400F19EA7 /* Constants.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  GMSMarker+MarkerAddPlace.h
+//  PlaceMarker.h
 //  WorkWherever
 //
 //  Created by Joshua Winskill on 11/20/14.
@@ -9,7 +9,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "Place.h"
 
-@interface GMSMarker (MarkerAddPlace)
+@interface PlaceMarker : GMSMarker
 
 @property (strong, nonatomic) Place *place;
 

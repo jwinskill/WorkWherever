@@ -68,8 +68,8 @@
     
     for (Place *place in self.places) {
         CLLocationCoordinate2D position = CLLocationCoordinate2DMake(place.latitude, place.longitude);
-        GMSMarker *marker = [GMSMarker markerWithPosition:position];
-        //marker.place = place;
+        PlaceMarker *marker = [PlaceMarker markerWithPosition:position];
+        marker.place = place;
         marker.title = place.name;
         marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
         marker.appearAnimation = kGMSMarkerAnimationPop;
