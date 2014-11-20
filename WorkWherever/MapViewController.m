@@ -7,8 +7,7 @@
 //
 
 #import "MapViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
-#import <CoreLocation/CoreLocation.h>
+
 
 @implementation MapViewController {
     GMSMapView *mapView_;
@@ -20,7 +19,6 @@
     // Create a GMSCameraPosition that tells the map to display the
     // coordinate -33.86,151.20 at zoom level 6.
     
-  //  UIImage *color = UIImage imageWithColor
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     self.searchBar.delegate = self;
@@ -36,17 +34,8 @@
     mapView_.mapType = kGMSTypeNormal;
     
     [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:0];
-    
+    mapView_.delegate = self;
     [self.view insertSubview:mapView_ atIndex:0];
-    
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.appearAnimation = kGMSMarkerAnimationPop;
-    marker.map = mapView_;
-    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -62,16 +51,32 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [mapView_ clear];
+    
     NSString *resourceURL = [[NSBundle mainBundle] pathForResource:@"GooglePlacesExample" ofType:@"json"];
     NSLog(@"%@", resourceURL);
     NSData *jsonData = [NSData dataWithContentsOfFile:resourceURL];
     
     NSString *myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSLog(@"%@", myString);
-    NSMutableArray *myArray = [[NSMutableArray alloc] init];
-    myArray = [Place parseJSONIntoPlaces:jsonData];
-    Place *testPlace = myArray[0];
-    NSLog(@"The name of the first place is %@",testPlace.name);
+    self.places = [Place parseJSONIntoPlaces:jsonData];
+    
+    for (Place *place in self.places) {
+        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(place.latitude, place.longitude);
+        GMSMarker *marker = [GMSMarker markerWithPosition:position];
+        marker.title = place.name;
+        marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
+        marker.appearAnimation = kGMSMarkerAnimationPop;
+        marker.map = mapView_;
+    }
+    [searchBar resignFirstResponder];
 }
+
+-(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+    InfoWindow *window = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
+    window.name.text = @"Some Name";
+    return window;
+}
+
 
 @end

@@ -16,11 +16,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.transitioner = [[Transitioner alloc] init];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"MAPVIEW_SEGUE"]) {
+        MapViewController *destinationVC = segue.destinationViewController;
+        self.transitioner.rotatePointY = 0;
+        self.transitioner.rotateAngleIn = -M_PI / 2;
+        self.transitioner.rotateAngleOut = -M_PI / 2;
+        destinationVC.transitioningDelegate = self.transitioner;
+    }
 }
+
 
 @end

@@ -40,7 +40,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ljr-cN-BdU" kind="presentation" id="wOe-k3-LR3"/>
+                                    <segue destination="Ljr-cN-BdU" kind="custom" identifier="MAPVIEW_SEGUE" id="Z6g-WW-y3c"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -70,6 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="422" y="-288"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="CZF-8Q-GXc">

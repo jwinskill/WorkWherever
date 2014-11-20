@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NetworkController.h"
+#import "Transitioner.h"
+#import "MapViewController.h"
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) Transitioner *transitioner;
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 
 @end
 
