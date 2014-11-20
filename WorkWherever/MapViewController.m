@@ -38,6 +38,11 @@
     [self.view insertSubview:mapView_ atIndex:0];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.view reloadInputViews];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     NSLog(@"before if");
@@ -64,6 +69,7 @@
     for (Place *place in self.places) {
         CLLocationCoordinate2D position = CLLocationCoordinate2DMake(place.latitude, place.longitude);
         GMSMarker *marker = [GMSMarker markerWithPosition:position];
+        //marker.place = place;
         marker.title = place.name;
         marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
         marker.appearAnimation = kGMSMarkerAnimationPop;
@@ -74,8 +80,12 @@
 
 -(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
     InfoWindow *window = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
-    window.name.text = @"Some Name";
+    window.name.text = marker.title;
     return window;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    
 }
 
 

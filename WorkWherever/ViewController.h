@@ -15,6 +15,7 @@
 @property (strong, nonatomic) Transitioner *transitioner;
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+- (IBAction)unwindToBaseController:(UIStoryboardSegue *)sender;
 
 @end
 
