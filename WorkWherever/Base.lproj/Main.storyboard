@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -103,6 +103,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fq2-hx-JVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1319" y="-288"/>
+        </scene>
+        <!--Wifi Detail View Controller-->
+        <scene sceneID="Xjd-S4-ygy">
+            <objects>
+                <viewController id="Fc8-a4-444" customClass="WifiDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qb5-Ru-DJo"/>
+                        <viewControllerLayoutGuide type="bottom" id="GaQ-3H-6ux"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w3C-P9-6zR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coffee Shop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpH-YN-C4d">
+                                <rect key="frame" x="190" y="80" width="221" height="59"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="38"/>
+                                <color key="textColor" red="0.19215686274509805" green="0.82745098039215681" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wifi Speed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1H-5i-K6o">
+                                <rect key="frame" x="16" y="182" width="86" height="27"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.82745098039999998" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P4-MQ-CVV">
+                                <rect key="frame" x="16" y="264" width="50" height="27"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.82745098039999998" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmN-BA-d44">
+                                <rect key="frame" x="16" y="346" width="44" height="27"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.82745098039999998" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWK-vP-uUo">
+                                <rect key="frame" x="16" y="428" width="54" height="27"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.82745098039999998" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.29411764705882354" green="0.19215686274509805" blue="0.050980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0P4-MQ-CVV" firstAttribute="top" secondItem="F1H-5i-K6o" secondAttribute="bottom" constant="55" id="7hw-Vn-GKp"/>
+                            <constraint firstItem="0P4-MQ-CVV" firstAttribute="leading" secondItem="w3C-P9-6zR" secondAttribute="leading" constant="16" id="9m3-Us-Vvw"/>
+                            <constraint firstItem="F1H-5i-K6o" firstAttribute="leading" secondItem="w3C-P9-6zR" secondAttribute="leading" constant="16" id="Mb7-cB-IOI"/>
+                            <constraint firstItem="YWK-vP-uUo" firstAttribute="leading" secondItem="w3C-P9-6zR" secondAttribute="leading" constant="16" id="Odn-ab-9sl"/>
+                            <constraint firstItem="FpH-YN-C4d" firstAttribute="top" secondItem="qb5-Ru-DJo" secondAttribute="bottom" constant="60" id="XQ0-ee-V84"/>
+                            <constraint firstItem="JmN-BA-d44" firstAttribute="leading" secondItem="w3C-P9-6zR" secondAttribute="leading" constant="16" id="YGW-od-x2S"/>
+                            <constraint firstAttribute="centerX" secondItem="FpH-YN-C4d" secondAttribute="centerX" id="i2E-Kq-WM2"/>
+                            <constraint firstItem="F1H-5i-K6o" firstAttribute="top" secondItem="FpH-YN-C4d" secondAttribute="bottom" constant="43" id="pr9-s2-Y9q"/>
+                            <constraint firstItem="YWK-vP-uUo" firstAttribute="top" secondItem="JmN-BA-d44" secondAttribute="bottom" constant="55" id="upZ-Tz-l5f"/>
+                            <constraint firstItem="JmN-BA-d44" firstAttribute="top" secondItem="0P4-MQ-CVV" secondAttribute="bottom" constant="55" id="vfv-Wm-Iqe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="foodLabel" destination="JmN-BA-d44" id="CnS-SL-LnJ"/>
+                        <outlet property="openLabel" destination="0P4-MQ-CVV" id="rrC-75-J9W"/>
+                        <outlet property="ratingLabel" destination="YWK-vP-uUo" id="78l-cd-mKt"/>
+                        <outlet property="wifiSpeedLabel" destination="F1H-5i-K6o" id="I0F-sS-rsB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nLE-OV-vat" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="369"/>
         </scene>
     </scenes>
     <resources>

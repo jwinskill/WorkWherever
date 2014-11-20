@@ -17,13 +17,16 @@
 }
 
 - (void)viewDidLoad {
+    
     // Create a GMSCameraPosition that tells the map to display the
     // coordinate -33.86,151.20 at zoom level 6.
     
   //  UIImage *color = UIImage imageWithColor
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     self.searchBar.delegate = self;
+    mapView_.delegate = self;
     [locationManager requestAlwaysAuthorization];
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
@@ -49,10 +52,11 @@
     
 }
 
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"before if");
     
+    NSLog(@"before if");
     if (!updatedLocation_) {
             NSLog(@"in if");
         updatedLocation_ = YES;
@@ -73,5 +77,21 @@
     Place *testPlace = myArray[0];
     NSLog(@"The name of the first place is %@",testPlace.name);
 }
+
+//-(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+//    UIView *infoWindow = [[UIView alloc] init];
+//    infoWindow.frame = CGRectMake(0, 0, 200, 70);
+//    infoWindow.backgroundColor = [UIColor grayColor];
+//    
+//    UILabel *titleLabel = [[UILabel alloc] init];
+//    titleLabel.frame = CGRectMake(14, 11, 175, 16);
+//    [infoWindow addSubview:titleLabel];
+//    titleLabel.text = marker.title;
+//    return  infoWindow;
+//}
+
+//- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+//    NSLog(@"Tapped!");
+//}
 
 @end
