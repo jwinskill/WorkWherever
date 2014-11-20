@@ -202,6 +202,8 @@
 				03A963831A1AA45000F19EA7 /* MapViewController.m */,
 				03A9639E1A1BFC6A00F19EA7 /* NetworkController.h */,
 				03A9639F1A1BFC6A00F19EA7 /* NetworkController.m */,
+				450DAF471A1D6E6E009AA3FF /* WifiDetailViewController.h */,
+				450DAF481A1D6E6E009AA3FF /* WifiDetailViewController.m */,
 			);
 			name = "Controller Layer";
 			sourceTree = "<group>";
@@ -357,6 +359,7 @@
 				03A963CA1A1E68AC00F19EA7 /* Transitioner.m in Sources */,
 				03A963481A1A746700F19EA7 /* WorkWherever.xcdatamodeld in Sources */,
 				03A963841A1AA45000F19EA7 /* MapViewController.m in Sources */,
+				450DAF491A1D6E6E009AA3FF /* WifiDetailViewController.m in Sources */,
 				03A963A71A1C051800F19EA7 /* Place.m in Sources */,
 				03A963C71A1D5DA200F19EA7 /* InfoWindow.m in Sources */,
 				03A964081A1EA7A600F19EA7 /* PlaceMarker.m in Sources */,

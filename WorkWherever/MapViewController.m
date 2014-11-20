@@ -12,22 +12,25 @@
 @implementation MapViewController {
     GMSMapView *mapView_;
     CLLocationManager *locationManager;
+    CLLocation *myLocation;
     BOOL updatedLocation_;
 }
 
 - (void)viewDidLoad {
+    
     // Create a GMSCameraPosition that tells the map to display the
     // coordinate -33.86,151.20 at zoom level 6.
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     self.searchBar.delegate = self;
+    mapView_.delegate = self;
     [locationManager requestAlwaysAuthorization];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
-                                                                 zoom:6];
+    myLocation = [mapView_ myLocation];
     
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude longitude:myLocation.coordinate.longitude zoom:2];
+    [mapView_ animateToLocation:myLocation.coordinate];
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
     
     mapView_.myLocationEnabled = YES;
@@ -45,13 +48,15 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"before if");
-    
-    if (!updatedLocation_) {
+    if ([keyPath isEqualToString:@"myLocation"]) {
             NSLog(@"in if");
-        updatedLocation_ = YES;
-        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:14];
+            updatedLocation_ = YES;
+            CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+            mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:15];
+            [mapView_ setNeedsDisplay];
+    }
+     else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 
