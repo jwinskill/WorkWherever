@@ -26,6 +26,13 @@
         self.transitioner.rotateAngleIn = -M_PI / 2;
         self.transitioner.rotateAngleOut = -M_PI / 2;
         destinationVC.transitioningDelegate = self.transitioner;
+    } else if ([segue.identifier isEqualToString:@"WIFI_SEGUE"]) {
+        PostViewController *destinationVC = segue.destinationViewController;
+        self.transitioner.rotatePointY = destinationVC.view.frame.size.height;
+        self.transitioner.rotateAngleIn = M_PI / 2;
+        self.transitioner.rotateAngleOut = M_PI / 2;
+        destinationVC.transitioningDelegate = self.transitioner;
+        [NetworkController networkController] fet
     }
 }
 

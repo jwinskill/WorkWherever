@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Transitioner.h"
 #import "MapViewController.h"
+#import "PostViewController.h"
+#import "NetworkController.h"
 
 @interface ViewController : UIViewController
 
