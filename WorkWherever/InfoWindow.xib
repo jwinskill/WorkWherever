@@ -24,22 +24,31 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Q-M2-AbO" customClass="ASStarRatingView">
+                    <rect key="frame" x="51" y="32" width="121" height="38"/>
+                    <color key="backgroundColor" red="0.10588235294117647" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
             </subviews>
             <constraints>
+                <constraint firstItem="Q6Q-M2-AbO" firstAttribute="leading" secondItem="sgA-po-fHx" secondAttribute="leading" constant="51" id="E8b-tr-YPn"/>
                 <constraint firstItem="sCV-WI-f15" firstAttribute="leading" secondItem="sgA-po-fHx" secondAttribute="leading" constant="8" id="Fwb-Vj-FHA"/>
                 <constraint firstItem="MYL-bM-Qh2" firstAttribute="top" secondItem="sgA-po-fHx" secondAttribute="top" constant="-13" id="K6y-d8-Lw8"/>
                 <constraint firstItem="sCV-WI-f15" firstAttribute="top" secondItem="sgA-po-fHx" secondAttribute="top" constant="8" id="LN2-Ji-hDD"/>
                 <constraint firstAttribute="trailing" secondItem="sCV-WI-f15" secondAttribute="trailing" constant="8" id="OCa-GO-oRT"/>
+                <constraint firstAttribute="centerX" secondItem="Q6Q-M2-AbO" secondAttribute="centerX" id="P6g-gq-Yqc"/>
+                <constraint firstItem="Q6Q-M2-AbO" firstAttribute="top" secondItem="sgA-po-fHx" secondAttribute="top" constant="32" id="QcA-m7-9Wv"/>
                 <constraint firstAttribute="bottom" secondItem="MYL-bM-Qh2" secondAttribute="bottom" constant="-13" id="TcR-et-Qro"/>
                 <constraint firstAttribute="centerX" secondItem="sCV-WI-f15" secondAttribute="centerX" id="ZHj-Tj-cYU"/>
                 <constraint firstItem="MYL-bM-Qh2" firstAttribute="leading" secondItem="sgA-po-fHx" secondAttribute="leading" id="aZj-io-ZjI"/>
+                <constraint firstAttribute="bottom" secondItem="Q6Q-M2-AbO" secondAttribute="bottom" constant="92" id="ey2-oF-Ohf"/>
                 <constraint firstAttribute="trailing" secondItem="MYL-bM-Qh2" secondAttribute="trailing" id="xVD-vi-RKC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="name" destination="sCV-WI-f15" id="HHz-ZA-C5K"/>
+                <outlet property="ratingView" destination="Q6Q-M2-AbO" id="dbj-XY-a6q"/>
             </connections>
-            <point key="canvasLocation" x="455.5" y="277"/>
+            <point key="canvasLocation" x="231.5" y="276"/>
         </view>
     </objects>
     <resources>
