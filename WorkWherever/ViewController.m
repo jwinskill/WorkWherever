@@ -23,16 +23,24 @@
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
+    self.parkingData = [[NSArray alloc] initWithObjects:@"Abundant and free",
+                                                       @"Abundant and paid",
+                                                       @"Hard to find and free",
+                                                       @"Hard to find and paid",
+                                                       @"Impossible",
+                                                       nil];
+    
     [locationManager startUpdatingLocation];
 }
 
 # pragma mark - Get current location
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     self.location = locations.lastObject;
     NSLog(@"current latitude: %f, current longitude: %f", self.location.coordinate.latitude, self.location.coordinate.longitude);
 }
 
-# pragma mark - prepare for segue
+# pragma mark - segue methods
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"MAPVIEW_SEGUE"]) {
@@ -49,7 +57,9 @@
         destinationVC.transitioningDelegate = self.transitioner;
         [[NetworkController networkController] fetchPlacesWithSearchTerm:nil withLatitude:self.location.coordinate.latitude andLongitude:self.location.coordinate.longitude andRadius:500 completionHandler:^(NSError *error, NSMutableArray *places) {
             destinationVC.placesNearby = places;
-            [destinationVC.pickerView reloadAllComponents];
+            destinationVC.parkingPicker.delegate = self;
+            destinationVC.parkingPicker.dataSource = self;
+            [destinationVC.locationPicker reloadAllComponents];
         }];
     }
 }
@@ -57,6 +67,29 @@
 
 - (IBAction)unwindToBaseController:(UIStoryboardSegue *)sender {
     
+}
+
+# pragma mark - UIPicker datasource/delegate methods
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.parkingData.count;
+}
+
+-(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel *tView = (UILabel *)view;
+    if (!tView) {
+        tView = [[UILabel alloc] init];
+        [tView setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:21]];
+        tView.textAlignment = NSTextAlignmentCenter;
+        NSString *parkingString = self.parkingData[row];
+        tView.text = parkingString;
+        return tView;
+    }
+    return nil;
 }
 
 

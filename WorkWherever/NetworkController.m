@@ -16,7 +16,7 @@
         url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i&keyword=%@",latitude, longitude, radius, searchTerm]];
         NSLog(@"The url is: %@", url.description);
     } else {
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i",latitude, longitude, radius]];
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i&type=establishment",latitude, longitude, radius]];
     }
     
     NSURLSessionConfiguration *configuruation = [NSURLSessionConfiguration defaultSessionConfiguration];

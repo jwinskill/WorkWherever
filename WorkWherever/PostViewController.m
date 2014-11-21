@@ -8,16 +8,17 @@
 
 #import "PostViewController.h"
 
-@interface PostViewController ()
-
+@interface PostViewController (){
+    Reachability *internetReachableFoo;
+}
 @end
 
 @implementation PostViewController 
 
 - (void)viewDidLoad {
     
-    self.pickerView.dataSource = self;
-    self.pickerView.delegate = self;
+    self.locationPicker.dataSource = self;
+    self.locationPicker.delegate = self;
 
 }
 
@@ -28,11 +29,6 @@
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return self.placesNearby.count;
 }
-
-//-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-//    Place *place = self.placesNearby[row];
-//    return place.name;
-//}
 
 -(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     UILabel *tView = (UILabel *)view;
@@ -45,6 +41,53 @@
         return tView;
     }
     return nil;
+}
+
+// Checks if we have an internet connection or not
+//- (void)testInternetConnection
+//{
+//    internetReachableFoo = [Reachability reachabilityWithHostname:@"www.google.com"];
+//    
+//    // Internet is reachable
+//    internetReachableFoo.reachableBlock = ^(Reachability*reach)
+//    {
+//        // Update the UI on the main thread
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            NSLog(@"Yayyy, we have the interwebs!");
+//        });
+//    };
+//    
+//    // Internet is not reachable
+//    internetReachableFoo.unreachableBlock = ^(Reachability*reach)
+//    {
+//        // Update the UI on the main thread
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            NSLog(@"Someone broke the internet :(");
+//        });
+//    };
+//    
+//    [internetReachableFoo startNotifier];
+//}
+
+- (IBAction)postButtonPressed:(id)sender {
+    
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    [reachability startNotifier];
+    
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    
+    if (status == ReachableViaWiFi)
+    {
+        //WiFi
+        NSLog(@"We're currently on wifi");
+        //TODO: - add WKWebView for POST
+        
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please Connect to wifi" message:@"In order to post wifi information for current work environment, please connect to the wifi network." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alertView show];
+    }
 }
 
 @end

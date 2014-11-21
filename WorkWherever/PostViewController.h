@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Place.h"
+#import "Reachability.h"
 
 @interface PostViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *placesNearby;
+@property (weak, nonatomic) IBOutlet UIPickerView *locationPicker;
+@property (weak, nonatomic) IBOutlet UIPickerView *parkingPicker;
 
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+- (IBAction)postButtonPressed:(id)sender;
 
 @end

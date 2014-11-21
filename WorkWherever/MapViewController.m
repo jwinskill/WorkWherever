@@ -55,7 +55,7 @@
             NSLog(@"in if");
             updatedLocation_ = YES;
             self.myLocation = [change objectForKey:NSKeyValueChangeNewKey];
-            mapView_.camera = [GMSCameraPosition cameraWithTarget:self.myLocation.coordinate zoom:6];
+            mapView_.camera = [GMSCameraPosition cameraWithTarget:self.myLocation.coordinate zoom:13];
             [mapView_ setNeedsDisplay];
             [mapView_ removeObserver:self forKeyPath:@"myLocation"];
     }
