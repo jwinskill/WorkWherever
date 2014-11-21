@@ -13,7 +13,7 @@
 @interface NetworkController : NSObject
 @property (strong, nonatomic) NSURLSession *urlSession;
 
-- (void) fetchPlacesWithSearchTerm:(NSString *)searchTerm completionHandler: (void(^)(NSError *error, NSMutableArray *places))completionHandler;
+- (void) fetchPlacesWithSearchTerm:(NSString *)searchTerm withLatitude: (double) latitude andLongitude: (double) longitude andRadius: (int) radius completionHandler: (void(^)(NSError *error, NSMutableArray *places))completionHandler;
 + (id) networkController;
 
 @end

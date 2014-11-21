@@ -12,7 +12,7 @@
 @implementation MapViewController {
     GMSMapView *mapView_;
     CLLocationManager *locationManager;
-    CLLocation *myLocation;
+//    CLLocation *myLocation;
     BOOL updatedLocation_;
 }
 
@@ -27,10 +27,11 @@
     mapView_.delegate = self;
     [locationManager requestAlwaysAuthorization];
     
-    myLocation = [mapView_ myLocation];
+    self.myLocation = [mapView_ myLocation];
+    NSLog(@"%f, %f", self.myLocation.coordinate.latitude, self.myLocation.coordinate.longitude);
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude longitude:myLocation.coordinate.longitude zoom:4];
-    [mapView_ animateToLocation:myLocation.coordinate];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.myLocation.coordinate.latitude longitude:self.myLocation.coordinate.longitude zoom:4];
+    [mapView_ animateToLocation:self.myLocation.coordinate];
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
     
     mapView_.myLocationEnabled = YES;
@@ -46,6 +47,7 @@
     [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:0];
     mapView_.myLocationEnabled = YES;
     [mapView_ setNeedsDisplay];
+    [mapView_ removeObserver:self forKeyPath:@"myLocation"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -53,9 +55,10 @@
     if ([keyPath isEqualToString:@"myLocation"]) {
             NSLog(@"in if");
             updatedLocation_ = YES;
-            CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-            mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:15];
+            self.myLocation = [change objectForKey:NSKeyValueChangeNewKey];
+            mapView_.camera = [GMSCameraPosition cameraWithTarget:self.myLocation.coordinate zoom:15];
             [mapView_ setNeedsDisplay];
+            [mapView_ removeObserver:self forKeyPath:@"myLocation"];
     }
      else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -65,24 +68,34 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [mapView_ clear];
     
-    NSString *resourceURL = [[NSBundle mainBundle] pathForResource:@"GooglePlacesExample" ofType:@"json"];
-    NSLog(@"%@", resourceURL);
-    NSData *jsonData = [NSData dataWithContentsOfFile:resourceURL];
+    [[NetworkController networkController] fetchPlacesWithSearchTerm:searchBar.text withLatitude:self.myLocation.coordinate.latitude andLongitude:self.myLocation.coordinate.longitude andRadius:300 completionHandler:^(NSError *error, NSMutableArray *places) {
+        if (error != nil) {
+            NSLog(@"%@", error.description);
+        }
+        self.places = places;
+        for (Place *place in self.places) {
+            CLLocationCoordinate2D position = CLLocationCoordinate2DMake(place.latitude, place.longitude);
+            PlaceMarker *marker = [PlaceMarker markerWithPosition:position];
+            marker.place = place;
+            marker.title = place.name;
+            marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
+            marker.appearAnimation = kGMSMarkerAnimationPop;
+            marker.map = mapView_;
+        }
+        [searchBar resignFirstResponder];
+    }];
+
+
     
-    NSString *myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", myString);
-    self.places = [Place parseJSONIntoPlaces:jsonData];
+//    NSString *resourceURL = [[NSBundle mainBundle] pathForResource:@"GooglePlacesExample" ofType:@"json"];
+//    NSLog(@"%@", resourceURL);
+//    NSData *jsonData = [NSData dataWithContentsOfFile:resourceURL];
+//    
+//    NSString *myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@", myString);
+//    self.places = [Place parseJSONIntoPlaces:jsonData];
     
-    for (Place *place in self.places) {
-        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(place.latitude, place.longitude);
-        PlaceMarker *marker = [PlaceMarker markerWithPosition:position];
-        marker.place = place;
-        marker.title = place.name;
-        marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
-        marker.appearAnimation = kGMSMarkerAnimationPop;
-        marker.map = mapView_;
-    }
-    [searchBar resignFirstResponder];
+    
 }
 
 -(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(PlaceMarker *)marker {

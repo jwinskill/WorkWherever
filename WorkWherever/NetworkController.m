@@ -10,9 +10,9 @@
 
 @implementation NetworkController
 
-- (void) fetchPlacesWithSearchTerm:(NSString *)searchTerm completionHandler: (void(^)(NSError *error, NSMutableArray *places))completionHandler {
+- (void) fetchPlacesWithSearchTerm:(NSString *)searchTerm withLatitude: (double) latitude andLongitude: (double) longitude andRadius: (int) radius completionHandler: (void(^)(NSError *error, NSMutableArray *places))completionHandler {
     
-    NSURL *urlWithSearchTerm = [NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=%@&location=47.620506,-122.349277&radius=5000&name=%@",kGoogleBrowserAPIKey, searchTerm]];
+    NSURL *urlWithSearchTerm = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i&name=%@",latitude, longitude, radius, searchTerm]];
     
     NSURLSessionConfiguration *configuruation = [NSURLSessionConfiguration defaultSessionConfiguration];
     self.urlSession = [NSURLSession sessionWithConfiguration:configuruation];
@@ -30,8 +30,8 @@
                     NSLog(@"success! code: %lu", httpURLResponse.statusCode);
                     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                     NSLog(@"%@", json);
-//                    NSMutableArray *places = [Places parseJSONIntoPlaces:data];
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{completionHandler(nil,nil);
+                    NSMutableArray *places = [Place parseJSONIntoPlaces:data];
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{completionHandler(nil,places);
                     }];
                 }
             }
