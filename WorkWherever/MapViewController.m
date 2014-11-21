@@ -29,7 +29,7 @@
     
     myLocation = [mapView_ myLocation];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude longitude:myLocation.coordinate.longitude zoom:2];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude longitude:myLocation.coordinate.longitude zoom:4];
     [mapView_ animateToLocation:myLocation.coordinate];
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
     
@@ -83,9 +83,12 @@
     [searchBar resignFirstResponder];
 }
 
--(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+-(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(PlaceMarker *)marker {
     InfoWindow *window = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
     window.name.text = marker.title;
+    window.ratingView.canEdit = NO;
+    window.ratingView.maxRating = 5;
+    window.ratingView.rating = marker.place.rating;
     return window;
 }
 
