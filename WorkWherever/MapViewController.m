@@ -41,9 +41,11 @@
     [self.view insertSubview:mapView_ atIndex:0];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.view reloadInputViews];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:0];
+    mapView_.myLocationEnabled = YES;
+    [mapView_ setNeedsDisplay];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
