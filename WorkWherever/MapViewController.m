@@ -12,7 +12,6 @@
 @implementation MapViewController {
     GMSMapView *mapView_;
     CLLocationManager *locationManager;
-//    CLLocation *myLocation;
     BOOL updatedLocation_;
 }
 
@@ -30,7 +29,7 @@
     self.myLocation = [mapView_ myLocation];
     NSLog(@"%f, %f", self.myLocation.coordinate.latitude, self.myLocation.coordinate.longitude);
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.myLocation.coordinate.latitude longitude:self.myLocation.coordinate.longitude zoom:4];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.myLocation.coordinate.latitude longitude:self.myLocation.coordinate.longitude zoom:6];
     [mapView_ animateToLocation:self.myLocation.coordinate];
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
     
@@ -56,7 +55,7 @@
             NSLog(@"in if");
             updatedLocation_ = YES;
             self.myLocation = [change objectForKey:NSKeyValueChangeNewKey];
-            mapView_.camera = [GMSCameraPosition cameraWithTarget:self.myLocation.coordinate zoom:15];
+            mapView_.camera = [GMSCameraPosition cameraWithTarget:self.myLocation.coordinate zoom:6];
             [mapView_ setNeedsDisplay];
             [mapView_ removeObserver:self forKeyPath:@"myLocation"];
     }
@@ -68,7 +67,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [mapView_ clear];
     
-    [[NetworkController networkController] fetchPlacesWithSearchTerm:searchBar.text withLatitude:self.myLocation.coordinate.latitude andLongitude:self.myLocation.coordinate.longitude andRadius:300 completionHandler:^(NSError *error, NSMutableArray *places) {
+    [[NetworkController networkController] fetchPlacesWithSearchTerm:searchBar.text withLatitude:self.myLocation.coordinate.latitude andLongitude:self.myLocation.coordinate.longitude andRadius:1000 completionHandler:^(NSError *error, NSMutableArray *places) {
         if (error != nil) {
             NSLog(@"%@", error.description);
         }
@@ -84,17 +83,6 @@
         }
         [searchBar resignFirstResponder];
     }];
-
-
-    
-//    NSString *resourceURL = [[NSBundle mainBundle] pathForResource:@"GooglePlacesExample" ofType:@"json"];
-//    NSLog(@"%@", resourceURL);
-//    NSData *jsonData = [NSData dataWithContentsOfFile:resourceURL];
-//    
-//    NSString *myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", myString);
-//    self.places = [Place parseJSONIntoPlaces:jsonData];
-    
     
 }
 

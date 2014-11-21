@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Place.h"
 
-@interface PostViewController : UIViewController
+@interface PostViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *placesNearby;
 
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @end
