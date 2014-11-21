@@ -45,6 +45,7 @@
 		03A963CA1A1E68AC00F19EA7 /* Transitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A963C91A1E68AC00F19EA7 /* Transitioner.m */; };
 		03A964081A1EA7A600F19EA7 /* PlaceMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A964071A1EA7A600F19EA7 /* PlaceMarker.m */; };
 		03BCF71E1A1EC46700DB8FF6 /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BCF71D1A1EC46700DB8FF6 /* ASStarRatingView.m */; };
+		03BCF7211A1F17DE00DB8FF6 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BCF7201A1F17DE00DB8FF6 /* PostViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		03A964071A1EA7A600F19EA7 /* PlaceMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMarker.m; sourceTree = "<group>"; };
 		03BCF71C1A1EC46700DB8FF6 /* ASStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStarRatingView.h; sourceTree = "<group>"; };
 		03BCF71D1A1EC46700DB8FF6 /* ASStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStarRatingView.m; sourceTree = "<group>"; };
+		03BCF71F1A1F17DE00DB8FF6 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		03BCF7201A1F17DE00DB8FF6 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		450EAC5A1A1BB4D800C302BE /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,6 +233,8 @@
 				03A963831A1AA45000F19EA7 /* MapViewController.m */,
 				03A9639E1A1BFC6A00F19EA7 /* NetworkController.h */,
 				03A9639F1A1BFC6A00F19EA7 /* NetworkController.m */,
+				03BCF71F1A1F17DE00DB8FF6 /* PostViewController.h */,
+				03BCF7201A1F17DE00DB8FF6 /* PostViewController.m */,
 			);
 			name = "Controller Layer";
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 			files = (
 				03A963451A1A746700F19EA7 /* AppDelegate.m in Sources */,
 				03A963CA1A1E68AC00F19EA7 /* Transitioner.m in Sources */,
+				03BCF7211A1F17DE00DB8FF6 /* PostViewController.m in Sources */,
 				03A963481A1A746700F19EA7 /* WorkWherever.xcdatamodeld in Sources */,
 				03A963841A1AA45000F19EA7 /* MapViewController.m in Sources */,
 				03A963A71A1C051800F19EA7 /* Place.m in Sources */,

@@ -11,13 +11,18 @@
 @implementation NetworkController
 
 - (void) fetchPlacesWithSearchTerm:(NSString *)searchTerm withLatitude: (double) latitude andLongitude: (double) longitude andRadius: (int) radius completionHandler: (void(^)(NSError *error, NSMutableArray *places))completionHandler {
-    
-    NSURL *urlWithSearchTerm = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i&name=%@",latitude, longitude, radius, searchTerm]];
+    NSURL *url = [[NSURL alloc] init];
+    if (searchTerm) {
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i&keyword=%@",latitude, longitude, radius, searchTerm]];
+        NSLog(@"The url is: %@", url.description);
+    } else {
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i",latitude, longitude, radius]];
+    }
     
     NSURLSessionConfiguration *configuruation = [NSURLSessionConfiguration defaultSessionConfiguration];
     self.urlSession = [NSURLSession sessionWithConfiguration:configuruation];
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:urlWithSearchTerm];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
     NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
