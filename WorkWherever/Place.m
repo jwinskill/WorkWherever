@@ -10,7 +10,7 @@
 
 @implementation Place
 
-- (instancetype) initWithName:(NSString *)name latitude: (double) latitude longitude: (double) longitude rating: (double) rating {
+- (instancetype) initWithName:(NSString *)name latitude: (double) latitude longitude: (double) longitude rating: (double) rating identifier: (NSString *)identifier {
     self = [super init];
     
     if (self) {
@@ -18,6 +18,7 @@
         self.latitude = latitude;
         self.longitude = longitude;
         self.rating = rating;
+        self.identifier = identifier;
     }
     return self;
 }
@@ -42,7 +43,8 @@
             NSString *name = placeDictionary[@"name"];
             NSString *ratingString = placeDictionary[@"rating"];
             double rating = [ratingString doubleValue];
-            Place *newPlace = [[Place alloc] initWithName:name latitude:latitude longitude:longitude rating:rating];
+            NSString *identifier = placeDictionary[@"id"];
+            Place *newPlace = [[Place alloc] initWithName:name latitude:latitude longitude:longitude rating:rating identifier:identifier];
             [places addObject:newPlace];
         }
         return places;

@@ -80,7 +80,26 @@
     {
         //WiFi
         NSLog(@"We're currently on wifi");
-        //TODO: - add WKWebView for POST
+        Place *selectedPlace = self.placesNearby[[self.locationPicker selectedRowInComponent:0]];
+        [[NetworkController networkController] postLocationWifiInformationWithPlace:selectedPlace completionHandler:^(NSError *error, NSData *jsonData) {
+            if (error != nil) {
+                NSLog(@"%@", error.localizedDescription);
+            } else {
+                NSString *dataString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                NSLog(@"%@", dataString);
+                
+                UIViewController *viewController = [[UIViewController alloc] init];
+                WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+                WKWebView *webView = [[WKWebView alloc] initWithFrame:viewController.view.bounds configuration:configuration];
+                viewController.view = webView;
+                NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+                NSString *urlString = jsonDictionary[@"url"];
+                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com%@",urlString]];
+                NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+                [webView loadRequest:request];
+                [self presentViewController:viewController animated:true completion:nil];
+            }
+        }];
         
     }
     else

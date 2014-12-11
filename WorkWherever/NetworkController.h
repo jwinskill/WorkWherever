@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSURLSession *urlSession;
 
 - (void) fetchPlacesWithSearchTerm:(NSString *)searchTerm withLatitude: (double) latitude andLongitude: (double) longitude andRadius: (int) radius completionHandler: (void(^)(NSError *error, NSMutableArray *places))completionHandler;
+- (void) postLocationWifiInformationWithPlace:(Place *) place completionHandler: (void(^)(NSError *error, NSData *jsonData))completionHandler;
 + (id) networkController;
 
 @end

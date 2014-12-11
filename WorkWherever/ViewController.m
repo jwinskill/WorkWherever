@@ -60,6 +60,9 @@
             destinationVC.parkingPicker.delegate = self;
             destinationVC.parkingPicker.dataSource = self;
             [destinationVC.locationPicker reloadAllComponents];
+            for (Place *place in destinationVC.placesNearby) {
+                NSLog(@"place: %@, id:%@", place.name, place.identifier);
+            }
         }];
     }
 }

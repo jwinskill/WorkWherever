@@ -16,7 +16,7 @@
         url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i&keyword=%@",latitude, longitude, radius, searchTerm]];
         NSLog(@"The url is: %@", url.description);
     } else {
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i&type=establishment",latitude, longitude, radius]];
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://work-wherever.herokuapp.com/google/inj/&location=%f,%f&radius=%i&keyword=code",latitude, longitude, radius]];
     }
     
     NSURLSessionConfiguration *configuruation = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -33,12 +33,40 @@
                 NSHTTPURLResponse *httpURLResponse = (NSHTTPURLResponse *)response;
                 if (httpURLResponse.statusCode >= 200 && httpURLResponse.statusCode <= 299) {
                     NSLog(@"success! code: %lu", httpURLResponse.statusCode);
-                    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                    NSLog(@"%@", json);
                     NSMutableArray *places = [Place parseJSONIntoPlaces:data];
                     [[NSOperationQueue mainQueue] addOperationWithBlock:^{completionHandler(nil,places);
                     }];
                 }
+            }
+        }
+    }];
+    [dataTask resume];
+}
+
+- (void) postLocationWifiInformationWithPlace:(Place *) place completionHandler: (void(^)(NSError *error, NSData *jsonData))completionHandler {
+    
+    NSString *post = [NSString stringWithFormat:@"placeID=%@&parkingRating=3", place.identifier];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%lu", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"https://work-wherever.herokuapp.com/api"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", error.localizedDescription);
+        } else {
+            NSHTTPURLResponse *httpURLResponse = (NSHTTPURLResponse *)response;
+            NSLog(@"response: %@", httpURLResponse.description);
+            if (httpURLResponse.statusCode >= 200 && httpURLResponse.statusCode <= 299) {
+                NSLog(@"POST successful");
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{completionHandler(nil, data);
+                }];
             }
         }
     }];

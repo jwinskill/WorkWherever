@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import "Place.h"
 #import "Reachability.h"
+#import "NetworkController.h"
 
 @interface PostViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
